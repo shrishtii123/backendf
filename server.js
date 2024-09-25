@@ -9,7 +9,7 @@ cloudinary.v2.config({
 });
 
 // Self-ping every 10 minutes to keep the server active
-const serverURL = `http://localhost:${process.env.PORT}`; // Change to your public URL if needed
+const serverURL = `${process.env.OPO}`; // Change to your public URL if needed
 
 setInterval(() => {
   http.get(serverURL, (res) => {
