@@ -53,14 +53,15 @@ const jobApplicationSchema = new mongoose.Schema({
     }
   },
   email: {
-    type: String,
-    required: [true, "Email is Required!"],
-    validate: [validator.isEmail, "Provide A Valid Email!"],
-    verification: {
-      type: verificationStatusSchema,
-      default: () => ({})
-    }
-  },
+  type: String,
+  required: [true, "Email is Required!"],
+  unique: true, // Ensure that email is unique
+  validate: [validator.isEmail, "Provide A Valid Email!"],
+  verification: {
+    type: verificationStatusSchema,
+    default: () => ({})
+  }
+},
   phone: {
     type: String,
     required: [true, "Phone is Required!"],
