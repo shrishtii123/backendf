@@ -1,8 +1,6 @@
 import app from "./app.js";
 import cloudinary from "cloudinary";
-import https from "https"; // Use 'http' for HTTP or 'https' for HTTPS
-import dotenv from 'dotenv';
-dotenv.config();
+import http from "http"; // Change this line to use 'http' if your server is HTTP
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -11,10 +9,10 @@ cloudinary.v2.config({
 });
 
 // Self-ping every 10 minutes to keep the server active
-const serverURL = `${process.env.OPO}`; // Change to your public URL if needed
+const serverURL = `${process.env.OPO}`; // Ensure this uses the correct protocol (http or https)
 
 setInterval(() => {
-  https.get(serverURL, (res) => {
+  http.get(serverURL, (res) => { // Change to http.get if using HTTP
     console.log(`Server pinged: ${res.statusCode}`);
   }).on("error", (err) => {
     console.error("Error pinging the server:", err.message);
