@@ -1,6 +1,8 @@
 import app from "./app.js";
 import cloudinary from "cloudinary";
 import https from "https"; // Use 'http' for HTTP or 'https' for HTTPS
+import dotenv from 'dotenv';
+dotenv.config();
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
