@@ -8,6 +8,7 @@ import { errorMiddleware } from "./middlewares/error.js";
 import messageRouter from "./router/messageRouter.js";
 import userRouter from "./router/userRouter.js";
 import jobApplicationRouter from "./router/jobApplicationRouter.js";
+import companyRoutes from "./router/companyRoutes.js"
 import testRouter from "./router/testRouter.js";
 import {sendOtp,verifyOtp} from "./controller/otpController.js";
 import { sendBulkEmails, sendCorrectionEmail } from "./controller/eController.js";
@@ -38,6 +39,7 @@ app.post("/api/v1/verifyOtp", verifyOtp);
 app.post("/api/v1/sendCorrectionEmail", sendCorrectionEmail);
 app.post("/api/v1/sendEmail", sendBulkEmails);
 
+app.use("/api/v1/company", companyRoutes);
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/jobApplication", jobApplicationRouter);
