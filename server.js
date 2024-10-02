@@ -1,6 +1,6 @@
 import app from "./app.js";
 import cloudinary from "cloudinary";
-import http from "http"; // Change this line to use 'http' if your server is HTTP
+import https from "https"; // Change this line to use 'http' if your server is HTTP
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -12,7 +12,7 @@ cloudinary.v2.config({
 const serverURL = `${process.env.OPO}`; // Ensure this uses the correct protocol (http or https)
 
 setInterval(() => {
-  http.get(serverURL, (res) => { // Change to http.get if using HTTP
+  https.get(serverURL, (res) => { // Change to http.get if using HTTP
     console.log(`Server pinged: ${res.statusCode}`);
   }).on("error", (err) => {
     console.error("Error pinging the server:", err.message);
