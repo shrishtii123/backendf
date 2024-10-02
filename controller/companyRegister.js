@@ -97,3 +97,18 @@ export const deleteJob = catchAsyncErrors(async (req, res, next) => {
     message: "Job deleted successfully!",
   });
 });
+
+
+export const getAllJobs = catchAsyncErrors(async (req, res, next) => {
+  const jobs = await Job.find(); // Retrieve all jobs from the database
+
+  if (!jobs || jobs.length === 0) {
+    return next(new ErrorHandler("No jobs found!", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    jobs,
+    message: "Jobs retrieved successfully!",
+  });
+});
