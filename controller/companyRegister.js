@@ -116,7 +116,6 @@ export const getAllJobs = catchAsyncErrors(async (req, res, next) => {
 
 export const getJobById = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
   
 
   // Validate MongoDB ObjectId

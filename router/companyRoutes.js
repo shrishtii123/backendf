@@ -13,7 +13,7 @@ const router = express.Router();
 router.post("/", registerJob);
 
 // Update job details
-router.put("/:id", updateJob);
+router.put("/update/:id", updateJob);
 
 // Delete a job
 router.delete("/delete/:id", deleteJob);
