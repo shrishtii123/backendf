@@ -3,7 +3,8 @@ import {
   registerJob,
   updateJob,
   deleteJob,
-  getAllJobs
+  getAllJobs,
+  getJobById
 } from "../controller/companyRegister.js"; // Adjust the path as necessary
 
 const router = express.Router();
@@ -12,11 +13,12 @@ const router = express.Router();
 router.post("/", registerJob);
 
 // Update job details
-router.put("/:id", updateJob);
+router.put("/update/:id", updateJob);
 
 // Delete a job
-router.delete("/:id", deleteJob);
+router.delete("/delete/:id", deleteJob);
 
 router.get("/all", getAllJobs);
+router.get("/get/:id", getJobById);
 
 export default router;

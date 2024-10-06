@@ -112,3 +112,27 @@ export const getAllJobs = catchAsyncErrors(async (req, res, next) => {
     message: "Jobs retrieved successfully!",
   });
 });
+
+
+export const getJobById = catchAsyncErrors(async (req, res, next) => {
+  const { id } = req.params;
+  
+
+  // Validate MongoDB ObjectId
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return next(new ErrorHandler("Invalid job ID.", 400));
+  // }
+
+  // Fetch the job from the database
+  const job = await Job.findById(id);
+
+  if (!job) {
+    return next(new ErrorHandler("Job not found.", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    job,
+    message: "Job retrieved successfully!",
+  });
+});
