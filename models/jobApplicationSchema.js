@@ -210,8 +210,8 @@ const jobApplicationSchema = new mongoose.Schema({
   },
   placed: {
     type: String,
-    enum: ["Placed", "Rejected"],
-    default: "Rejected",
+    enum: ["Placed", "Not Placed"],
+    default: "Not Placed",
     verification: {
       type: verificationStatusSchema,
       default: () => ({})
