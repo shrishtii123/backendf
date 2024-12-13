@@ -22,11 +22,11 @@ const verificationStatusSchema = new mongoose.Schema({
 const proofSchema = new mongoose.Schema({
   url: {
     type: String,
-    required: [true, "Proof URL is required!"]
+    // required: [true, "Proof URL is required!"]
   },
   public_id: {
     type: String,
-    required: [true, "Proof Public ID is required!"]
+    // required: [true, "Proof Public ID is required!"]
   },
   verification: {
     type: verificationStatusSchema,
