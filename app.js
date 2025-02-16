@@ -8,7 +8,7 @@ import { errorMiddleware } from "./middlewares/error.js";
 import messageRouter from "./router/messageRouter.js";
 import userRouter from "./router/userRouter.js";
 import jobApplicationRouter from "./router/jobApplicationRouter.js";
-import companyRoutes from "./router/companyRoutes.js"
+import companyRoutes from "./router/companyRoutes.js";
 import testRouter from "./router/testRouter.js";
 import {sendOtp,verifyOtp} from "./controller/otpController.js";
 import { sendBulkEmails, sendCorrectionEmail } from "./controller/eController.js";

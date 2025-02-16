@@ -32,21 +32,22 @@ export const sendOtp = catchAsyncErrors(async (req, res, next) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     port: 587,
-secure: false, 
-requireTLS: true,
-logger: true,
-debug: true,
+    secure: false, 
+    requireTLS: true,
     auth: {
       user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
+      pass: process.env.PASSWORD, // Use an App Password here
     },
-    connectionTimeout: 30000
+    tls: {
+      rejectUnauthorized: false, // Fixes self-signed certificate error
+    },
   });
+  
 
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
-    subject: "Your OTP Code",
+    subject: "Verify Email",
     text: `Your OTP code is ${otp}. It will expire in 10 minutes.`,
   };
 
