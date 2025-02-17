@@ -62,6 +62,27 @@ const jobApplicationSchema = new mongoose.Schema({
     default: () => ({})
   }
 },
+parentemail: {
+  type: String,
+  required: [true, "Email is Required!"],
+  unique: true, // Ensure that email is unique
+  validate: [validator.isEmail, "Provide A Valid Email!"],
+  verification: {
+    type: verificationStatusSchema,
+    default: () => ({})
+  }
+},
+heademail: {
+  type: String,
+  required: [true, "Email is Required!"],
+ 
+  validate: [validator.isEmail, "Provide A Valid Email!"],
+  verification: {
+    type: verificationStatusSchema,
+    default: () => ({})
+  }
+},
+
   phone: {
     type: String,
     required: [true, "Phone is Required!"],
@@ -221,6 +242,18 @@ const jobApplicationSchema = new mongoose.Schema({
     type: Boolean,
     default: false
     
+    
+  },
+  sick: {
+    type: String,
+    enum: ["No", "Yes"],
+    default: "No",
+    
+  },
+  leave: {
+    type: String,
+    enum: ["Yes", "No"],
+    default: "No",
     
   },
   amount: {

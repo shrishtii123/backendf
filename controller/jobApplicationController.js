@@ -21,6 +21,8 @@ export const postJobApplication = catchAsyncErrors(async (req, res, next) => {
     reg,
     fullName,
     email,
+    parentemail,
+    heademail,
     phone,
     cgpa,
     dob,
@@ -48,6 +50,8 @@ export const postJobApplication = catchAsyncErrors(async (req, res, next) => {
     !reg ||
     !fullName ||
     !email ||
+    !parentemail ||
+    !heademail ||
     !phone ||
     !cgpa ||
     !dob ||
@@ -68,6 +72,8 @@ export const postJobApplication = catchAsyncErrors(async (req, res, next) => {
     reg,
     fullName,
     email,
+    parentemail,
+    heademail,
     phone,
     cgpa,
     dob,
@@ -152,6 +158,8 @@ export const updateJobApplication = catchAsyncErrors(async (req, res, next) => {
     reg,
     fullName,
     email,
+    parentemail,
+    heademail,
     phone,
     cgpa,
     dob,
@@ -181,6 +189,8 @@ export const updateJobApplication = catchAsyncErrors(async (req, res, next) => {
   jobApplication.reg = reg || jobApplication.reg;
   jobApplication.fullName = fullName || jobApplication.fullName;
   jobApplication.email = email || jobApplication.email;
+  jobApplication.parentemail = parentemail || jobApplication.parentemail;
+  jobApplication.heademail = heademail || jobApplication.heademail;
   jobApplication.phone = phone || jobApplication.phone;
   jobApplication.cgpa = cgpa || jobApplication.cgpa;
   jobApplication.dob = dob || jobApplication.dob;

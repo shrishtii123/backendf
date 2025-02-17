@@ -7,6 +7,7 @@ import {
   getJobApplicationDetail,
   getJobApplicationByEmail
 } from "../controller/jobApplicationController.js";
+import { updateJobApplicationStatus } from "../controller/docterController.js";
 // import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 // import { verifyToken } from '../utils/jwtToken.js';
 // import { JobApplication } from '../models/jobApplicationSchema.js';
@@ -52,5 +53,6 @@ router.get("/detail/:reg", getJobApplicationDetail);
 
 // Route to get job application details by email (authenticated route)
 router.get('/details/:email', getJobApplicationByEmail);
+router.put("/up/:id", updateJobApplicationStatus);
 
 export default router;

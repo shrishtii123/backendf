@@ -13,6 +13,7 @@ import testRouter from "./router/testRouter.js";
 import {sendOtp,verifyOtp} from "./controller/otpController.js";
 import { sendBulkEmails, sendCorrectionEmail } from "./controller/eController.js";
 import { addCandidate, removeCandidate, addVote , getAllCandidates, checkVoteStatus, updateVotingStatus} from "./controller/candidatecontroller.js"
+import { addFacility, bookFacility, getAllBookingRequests, getAllFacilities, getFacilityBookings, requestBooking, updateBookingStatus } from "./controller/facilityController.js";
 
 const app = express();
 config({ path: ".env" });
@@ -87,6 +88,12 @@ app.get("/api/v1/candidates", async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
+app.post("/addfacilities", addFacility); // Add a facility
+app.get("/getfacilities", getAllFacilities); // Get all facilities
+app.post("/requestBooking", requestBooking);
+app.get("/bookings", getAllBookingRequests); 
+app.put("/update-booking-status", updateBookingStatus);
+
 
 
 
