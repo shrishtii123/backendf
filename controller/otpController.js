@@ -16,6 +16,10 @@ export const sendOtp = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Please provide an email address!", 400));
   }
 
+  if (!email.endsWith("@sggs.ac.in")) {
+    return next(new ErrorHandler("Restricted access! Please use your college email ID.", 403));
+  }
+
   const otp = generateOtp();
   const otpExpires = Date.now() + 10 * 60 * 1000; // OTP expires in 10 minutes
 
@@ -43,7 +47,6 @@ export const sendOtp = catchAsyncErrors(async (req, res, next) => {
     },
   });
   
-
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
@@ -59,7 +62,7 @@ export const sendOtp = catchAsyncErrors(async (req, res, next) => {
     });
   } catch (error) {
     console.error("Error sending email: ", error);
-    return next(new ErrorHandler("Failed to send OTP email", 500));
+    return next(new ErrorHandler("Failed to send OTP email, use college email id", 500));
   }
 });
 
@@ -81,9 +84,7 @@ export const verifyOtp = catchAsyncErrors(async (req, res, next) => {
   
   res.status(200).json({
     success: true,
-    
     message: "OTP verified successfully",
-   
   });
-  console.log('done')
+  console.log('done');
 });
